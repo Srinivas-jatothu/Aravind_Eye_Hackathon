@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aravinda Eye Hospital - Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Aravinda Eye Hospital Logo" class="logo">
+            <nav>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="prediction" class="form-section">
+            <h2>OPD Information </h2>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="type_of_day">Type of Day:</label>
+                    <select id="type_of_day" name="type_of_day" required>
+                        <option value="">Select...</option>
+                        <option value="Normal">Normal</option>
+                        <option value="National_Holiday">National_Holiday</option>
+                        <option value="Auspicious">Auspicious</option>
+                        <option value="Local Festival">Local Festival</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+
+            {% if input_data %}
+            <section id="result" class="result-section">
+                
+                
+                {% if prediction_result_new %}
+                <section class="prediction-result">
+                    <h2>New Prediction Result</h2>
+                    <p>{{ prediction_result_new }}</p>
+                </section>
+                {% endif %}
+
+                {% if prediction_result_review %}
+                <section class="prediction-result">
+                    <h2>Review Prediction Result</h2>
+                    <p>{{ prediction_result_review }}</p>
+                </section>
+                {% endif %}
+            </section>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Aravinda Eye Hospital. All rights reserved.</p>
+    </footer>
+</body>
+</html>
